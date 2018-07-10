@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create New User</title>
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			color: #444444;
+			-webkit-font-smoothing: antialiased;
+		}
+		.bg {
+			background-image: url(https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214);
+			height: 100%;
+			background-position: fixed;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		#error {
+			position: fixed;
+			width: 340px;
+			height: 30px;
+			background: red;
+			text-align: center;
+			top: 12%;
+			left: 39.62%;
+		}
+		#error_child {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 50%;
+			margin: auto;
+		}
+		#container {
+			position: fixed;
+			width: 340px;
+			height: 540px;
+			top: 40%;
+			left: 50%;
+			margin-top: -180px;
+			margin-left: -150px;
+			background: #fff;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-shadow: 0 1px 2px rgba(0,0,0, .1);
+		}
+		h1 {
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 40px;
+		}
+		form {
+			margin: 0 auto;
+			margin-top: 20px;
+		}
+		label {
+			color: #555;
+			display: inline-block;
+			margin-left: 18px;
+			padding-top: 10px;
+			font-size: 14px;
+		}
+		input {
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 12px;
+			outline: none;
+		}
+		input[type=text],
+		input[type=password],
+		input[type=email] {
+			color: #777;
+			padding-left: 10px;
+			margin: 10px;
+			margin-top: 12px;
+			margin-left: 18px;
+			width: 290px;
+			height: 35px;
+			border: 1px solid #c7d0d2;
+			border-radius: 2px;
+			box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;	
+		}
+		input[type=submit] {
+			width: 80px;
+			height: 30px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #fff;
+			background-color: #acd63f;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#6ee8e8), to(#6ec2e8));
+			background-image: -moz-linear-gradient(top left 90deg, #6ee8e8 0%, #6ec2e8 100%);
+			background-image: linear-gradient(top left 90deg, #6ee8e8 0%, #6ec2e8 100%);
+			border-radius: 30px;
+			border: 1px solid #66add6;
+			box-shadow: 0 1px 2px rgba(0,0,0,.3), inset 0 1px 0 rgba(255, 255, 255, .5);
+			cursor: pointer;
+		}
+		#lower {
+			background: #ecf2f5;
+			width: 100%;
+			height: 69px;
+			margin-top: 20px;
+		}
+		.check {
+			margin-left: 3px;
+		}
+		a {
+			color: black;
+			text-decoration: none;
+		}
+		a:link {
+			color: black;
+			text-decoration: none;
+		}
+		a:visited {
+			color: black;
+			text-decoration: none;
+		}
+		a:hover {
+			color: red;
+		}
+	</style>
+</head>
+
+<body onload="write_error()">
+	<div class="bg">
+		<% if(typeof error !== 'undefined') { %>
+		<div id="error">
+			<div id="error_child">
+				<%= error %>
+			</div>
+		</div>
+		<% } %>
+		<div id="container">
+			<form action="http://localhost:3000/create_user" method="post">
+				<center><h1>Create User</h1></center>
+				<label for="username">Username:</label>
+				<input type="text" name="username" id="username" placeholder="Enter your username"><br>
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email" placeholder="Enter your email address"><br>
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" placeholder="Enter your password"><br>
+				<label for="passwordConf">Confirm Password:</label>
+				<input type="password" name="passwordConf" id="passwordConf" placeholder="Re-enter your password"><br><br>
+				<center><input type="submit" value="Submit"></center><br>
+			</form>
+			<center><a href="login">Log in Here</a></center>
+		</div>
+	</div>
+</body>
+</html>

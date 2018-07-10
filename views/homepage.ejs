@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			color: white;
+			-webkit-font-smoothing: antialiased;
+		}
+		h1 {
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 60px;
+			color: #444;
+		}
+		.bg {
+			background-color: black;
+			height: 150%;
+		}
+		#top-bar {
+			width: 100%;
+			height: 170px;
+			margin-top: -40px;
+			background-image: url(https://www.planwallpaper.com/static/images/4443075-cool-backgrounds.jpg);
+			position: relative;
+		}
+		#login{
+			background-color: #1A1B1D;
+			width: 75px;
+			height: 30px;
+			border: 2px solid black;
+			display: block;
+			padding: 70px 0;
+		  	text-align: center;
+		  	font-family: sans-serif;
+		 	font-weight: bold;
+		 	font-size: 13px;
+		 	background: #FF9900;
+			color: #000000;
+		  	border-radius: 150px;
+		  	padding: 0 15px 0 15px;
+		  	display: inline-block;
+		  	position: absolute;
+		  	right: 0px;
+		  	bottom: 20px;
+		}
+		#login:hover {
+			background-color: pink;
+		}
+		#child {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 50%;
+			height: 50%;
+			margin: auto;
+		}
+		#title {
+			text-align: center;
+			position: relative;
+			padding-top: 20px;
+			height: 50px;
+			margin: auto;
+		}
+		#create-account {
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
+		#container {
+			position: fixed;
+			width: 200px;
+			height: 50px;
+			bottom: 5px;
+			right: 5px;
+			margin-top: -180px;
+			margin-left: -150px;
+			background: grey;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-shadow: 0 1px 2px rgba(0,0,0, .1);
+			text-align: center;
+		}
+		a {
+			color: white;
+			text-decoration: none;
+		}
+		a:link {
+			color: white;
+			text-decoration: none;
+		}
+		a:visited {
+			color: white;
+			text-decoration: none;
+		}
+		a:hover {
+			color: red;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div id="top-bar">
+			<div id="title"><h1>liftBuddy</h1></div>
+		</div>
+		<div id="container">
+			<a href="login">
+				<div id="login">
+					<div id="child">
+						Login
+					</div>
+				</div>
+			</a>
+			<div id="create-account">
+				<a href="create_user">Or create an account here</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
