@@ -50,9 +50,9 @@ router.post('/', async (req, res, next) => {
 		}
 		User.create(userData, function (err, user) {
 			if (err) {
-				let err = new Error('Email already exists');
+				let err = new Error(`${req.body.email} already exists`);
 				err.status = 400;
-				res.render('create_user', {error: "Email already exists"});
+				res.render('create_user', {error: `${req.body.email} already exists`});
 				return next(err)
 			}
 			else {
