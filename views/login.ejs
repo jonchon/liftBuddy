@@ -18,6 +18,25 @@
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+		#error {
+			position: fixed;
+			width: 340px;
+			height: 30px;
+			background: red;
+			text-align: center;
+			top: 22.3%;
+			left: 39.62%;
+		}
+		#error_child {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 50%;
+			margin: auto;
+		}
+
 		#container {
 			position: fixed;
 			width: 340px;
@@ -105,19 +124,26 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="write_error()">
 	<div class="bg">
-	<div id="container">
-		<form>
-			<center><h1>liftBuddy</h1></center>
-			<label for="email">Email:</label>
-			<input type="email" name="email" id="email" placeholder="Enter your email"><br>
-			<label for="password">Password:</label>
-			<input type="password" name="password" id="password" placeholder="Enter your password"><br><br>
-			<center><input type="submit" value="Submit"></center><br>
-			<center><a href="create_user">Don't have an account?</a></center>
-		</form>
-	</div>
+		<% if(typeof error !== 'undefined') { %>
+			<div id="error">
+				<div id="error_child">
+					<%= error %>
+				</div>
+			</div>
+		<% } %>
+		<div id="container">
+			<form action="http://localhost:3000/login" method="post">
+				<center><h1>liftBuddy</h1></center>
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email" placeholder="Enter your email"><br>
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" placeholder="Enter your password"><br><br>
+				<center><input type="submit" value="Submit"></center><br>
+				<center><a href="create_user">Don't have an account?</a></center>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

@@ -128,11 +128,11 @@
 <body onload="write_error()">
 	<div class="bg">
 		<% if(typeof error !== 'undefined') { %>
-		<div id="error">
-			<div id="error_child">
-				<%= error %>
+			<div id="error">
+				<div id="error_child">
+					<%= error %>
+				</div>
 			</div>
-		</div>
 		<% } %>
 		<div id="container">
 			<form action="http://localhost:3000/create_user" method="post">
