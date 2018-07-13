@@ -1,10 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Account</title>
+	<title>Add Workout</title>
 	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			color: #444444;
+			-webkit-font-smoothing: antialiased;
+		}
+		select {
+			border: none;
+			border-radius: 4px;
+			padding: 15px 20px;
+			background-color: #444;
+			color: white;
+			font-size: 2vw;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+		}
+		.bg {
+			height: 100%;
+			width: 100%;
+			bottom: 0%;
+			background-color: white;
+			position: absolute;
+		}
+		.container {
+			background-image: url(https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214);
+			height: 100px;
+			background-position: absolute;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			top: 0%;
+			bottom: 0%;
+			left: 0%;
+			right: 0%;
+		}
+		#menu {
+			width: 430px;
+			height: 150px;
+			background-image: url("http://www.images.searchpointer.com/steel/8583/1.jpg");
+			background-position: relative;
+			background-attachment: relative;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			left: 50%;
+			margin-left: -215px;
+			clip-path: polygon(0 0, 100% 0, calc(100% - 15%) 100%, 15% 100%);
+		}
+		#menu_text {
+			color: #444;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			font-size: 60px;
+			font-weight: bold;
+			position: absolute;
+			right: 50%;
+			top: -30%;
+			margin: auto;
+			margin-right: -29.5%;
+			margin-top: 20%;
+		}
+		#workout {
+			position: absolute;
+			top: 200px;
+			left: 50%;
+			margin-left: -5%;
+		}
+		#profile {
+			height: 60px;
+			width: 60px;
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			background-color: white;
+			border-radius: 10px;
+		}
 	</style>
 </head>
 <body>
+	<div class="bg">
+		<div class="container">
+		</div>
+		<a href="">
+			<div id="menu">
+				<div id="menu_text">
+					liftBuddy
+				</div>
+			</div>
+		</a>
+		<div id="workout">
+				<select name="workout">
+					<option value="legs">Legs</option>
+					<option value="chest">Chest</option>
+					<option value="back">Back</option>
+					<option value="shoulder">Shoulder</option>
+					<option value="arms">Arms</option>
+					<option value="cardio">Cardio</option>
+				</select>
+			</div>
+		<div id="profile">
+			<% if(typeof name !== 'undefined') { %>
+				<%= name %>
+			<% } else { %>
+				sorry
+			<% } %>
+		</div>
+	</div>
 </body>
 </html>
