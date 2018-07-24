@@ -16,7 +16,7 @@
 			padding: 15px 20px;
 			background-color: #444;
 			color: white;
-			font-size: 2vw;
+			font-size: 20px;
 			-webkit-appearance: none;
 			-moz-appearance: none;
 		}
@@ -52,6 +52,7 @@
 			left: 50%;
 			margin-left: -215px;
 			clip-path: polygon(0 0, 100% 0, calc(100% - 15%) 100%, 15% 100%);
+			border-radius: 80px;
 		}
 		#menu_text {
 			color: #444;
@@ -67,19 +68,31 @@
 			margin-top: 20%;
 		}
 		#workout {
-			position: absolute;
+			position: fixed;
 			top: 200px;
-			left: 50%;
-			margin-left: -5%;
+			left: 30%;
+			margin-left: -1%;
 		}
-		#profile {
-			height: 60px;
-			width: 60px;
-			position: absolute;
+		#options {
+			position: fixed;
+			top: 300px;
+			left: 25%;
+		}
+		.logout {
+			height: 40px;
+			width: 100px;
+			position: fixed;
 			right: 15px;
-			top: 15px;
-			background-color: white;
+			top: 28px;
+			background-color: #8ca9d8;
 			border-radius: 10px;
+			text-align: center;
+		}
+		.logout-child {
+			position: abolute;
+			margin-top: 10px;
+			color: white;
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -95,22 +108,43 @@
 			</div>
 		</a>
 		<div id="workout">
-				<select name="workout">
-					<option value="legs">Legs</option>
-					<option value="chest">Chest</option>
-					<option value="back">Back</option>
-					<option value="shoulder">Shoulder</option>
-					<option value="arms">Arms</option>
-					<option value="cardio">Cardio</option>
-				</select>
-			</div>
-		<div id="profile">
-			<% if(typeof name !== 'undefined') { %>
-				<%= name %>
-			<% } else { %>
-				sorry
-			<% } %>
+			<select id="workout" name="workout" size=1>
+				<option value="legs">Legs</option>
+				<option value="chest">Chest</option>
+				<option value="back">Back</option>
+				<option value="shoulder">Shoulder</option>
+				<option value="arms">Arms</option>
+				<option value="cardio">Cardio</option>
+			</select>
 		</div>
-	</div>
+		<div id="options">
+			<select id="legs" name="legs" size=10 multiple>
+				<option value="front-squat">Front Squat</option>
+				<option value="back-squat">Back Squat</option>
+				<option value="sumo-squat">Sumo Squat</option>
+				<option value="split-squat">Back Squat</option>
+				<option value="goblet-squat">Goblet Squat</option>
+				<option value="leg-press">Leg Press</option>
+				<option value="stationary-lunges">Stationary Lunges</option>
+				<option value="Walking Lunges">Walking Lunges</option>
+				<option value="leg-extensions">Leg Extensions</option>
+				<option value="sissy-squat">Sissy Squat</option>
+				<option value="hack-squat">Hack Squat</option>
+				<option value="lying-leg-curl">Lying Leg Curl</option>
+				<option value="seated-leg-curl">Seated Leg Curl</option>
+				<option value="Stiff-leg Deadlift">Stiff-Leg Deadlift</option>
+				<option value="one-leg Deadlift">One-Leg Deadlift</option>
+				<option value="glute-bridges">Glute Bridges</option>
+				<option value="seated-thigh-abduction">Seated Thigh Abduction</option>
+				<option value="standing-calf-raises">Standing Calf Raises</option>
+				<option value="seated-calf-raises">Seated Calf Raises</option>
+				<option value="donkey-calf-raises">Donkey Calf Raises</option>
+			</select>
+		</div>
+		<a href='logout'>
+			<div class="logout">
+				<div class="logout-child">Log Out</div>
+			</div>
+		</a>
 </body>
 </html>

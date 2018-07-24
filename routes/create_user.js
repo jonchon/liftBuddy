@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
 })
 
 router.post('/', async (req, res, next) => {
-
 	if (req.body.email && req.body.username && req.body.password && req.body.passwordConf) {
 		let userData = {
 			email: req.body.email,
@@ -20,7 +19,7 @@ router.post('/', async (req, res, next) => {
 			password: req.body.password,
 			passwordConf: req.body.passwordConf,
 		}
-			//verify that password & passwordConf matches
+		//verify that password & passwordConf matches
 		if (req.body.password !== req.body.passwordConf) {
 			let err = new Error('Passwords do not match');
 			err.status = 400;
@@ -36,9 +35,10 @@ router.post('/', async (req, res, next) => {
 					return next(err)
 				}
 				else {
+					req.session.userId = user._id;
+					req.session.username = req.body.username;
 					return res.redirect('/profile');
 				}
-
 			});
 		}
 	}

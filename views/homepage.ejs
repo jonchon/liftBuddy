@@ -3,11 +3,11 @@
 <head>
 	<title>Homepage</title>
 	<style>
-		html, body {
+	html, body {
 			width: 100%;
 			height: 100%;
 			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			color: white;
+			color: #444444;
 			-webkit-font-smoothing: antialiased;
 		}
 		h1 {
@@ -16,15 +16,54 @@
 			color: #444;
 		}
 		.bg {
-			background-color: black;
-			height: 150%;
-		}
-		#top-bar {
+			height: 180%;
 			width: 100%;
-			height: 170px;
-			margin-top: -40px;
-			background-image: url(https://www.planwallpaper.com/static/images/4443075-cool-backgrounds.jpg);
-			position: relative;
+			bottom: 0%;
+			background-color: #CFB6B6;
+			position: absolute;
+			text-align: center;
+			margin-left: -8px;
+			top: 0%;
+		}
+		.bgcontainer {
+			background-image: url(https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214);
+			height: 100px;
+			background-position: absolute;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			top: 0%;
+			bottom: 0%;
+			left: 0%;
+			right: 0%;
+		}
+		#menu {
+			width: 430px;
+			height: 150px;
+			background-image: url("http://www.images.searchpointer.com/steel/8583/1.jpg");
+			background-position: fixed;
+			background-attachment: relative;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			left: 50%;
+			margin-left: -215px;
+			clip-path: polygon(0 0, 100% 0, calc(100% - 15%) 100%, 15% 100%);
+			border-radius: 80px;
+		}
+		#menu_text {
+			color: #444;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			font-size: 60px;
+			font-weight: bold;
+			position: absolute;
+			right: 50%;
+			top: -30%;
+			margin: auto;
+			margin-right: -29.5%;
+			margin-top: 20%;
 		}
 		#login{
 			background-color: #1A1B1D;
@@ -45,6 +84,7 @@
 		  	position: absolute;
 		  	right: 0px;
 		  	bottom: 20px;
+		  	margin-right: 5px;
 		}
 		#login:hover {
 			background-color: pink;
@@ -59,31 +99,27 @@
 			height: 50%;
 			margin: auto;
 		}
-		#title {
-			text-align: center;
-			position: relative;
-			padding-top: 20px;
-			height: 50px;
-			margin: auto;
-		}
 		#create-account {
 			position: absolute;
 			right: 0px;
 			bottom: 0px;
+			margin-right: 5px;
+			margin-bottom: 3px;
 		}
 		#container {
 			position: fixed;
 			width: 200px;
-			height: 50px;
+			height: 60px;
 			bottom: 5px;
 			right: 5px;
 			margin-top: -180px;
 			margin-left: -150px;
-			background: grey;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			background: rgba(175, 204, 219, 0.7);
 			border-radius: 3px;
 			border: 1px solid #ccc;
 			box-shadow: 0 1px 2px rgba(0,0,0, .1);
-			text-align: center;
 		}
 		a {
 			color: white;
@@ -101,13 +137,57 @@
 			color: red;
 			text-decoration: none;
 		}
+		#text_box_title {
+			position: absolute;
+			height: 150px;
+			width: 90%;
+			background-color: #A9B6CE;
+			margin-top: 100px;
+			display: inline-block;
+			margin-left: -45%;
+			margin-top: 150px;
+			text-align: center;
+		}
+		#text_box {
+			position: absolute;
+			width: 90%;
+			height: 1000px;
+			background-color: #90B3D3;
+			margin-top: 100px;
+			display: inline-block;
+			margin-left: -45%;
+			margin-top: 300px;
+			text-align: center;
+		}
+		#logout {
+			position: fixed;
+			height: 20px;
+			width: 300px;
+			color: white;
+			background-color: red;
+			text-align: center;
+			left: 50%;
+			margin-left: -150px;
+			top: 20px;
+		}
 	</style>
 </head>
 <body>
 	<div class="bg">
-		<div id="top-bar">
-			<div id="title"><h1>liftBuddy</h1></div>
+		<div id="text_box_title">
+			<h1>Hello! Welcome to liftBuddy</h1>
 		</div>
+		<div id="text_box">
+		</div>
+		<div class="bgcontainer">
+		</div>
+		<a href="">
+			<div id="menu">
+				<div id="menu_text">
+					liftBuddy
+				</div>
+			</div>
+		</a>
 		<div id="container">
 			<a href="login">
 				<div id="login">

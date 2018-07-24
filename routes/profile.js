@@ -1,24 +1,27 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const User = require('../models/user');
-const profile = require('../routes/profile');
 const router = express.Router();
 
 
-router.get('/profile', function (req, res, next) {
+router.get('/', function (req, res, next) {
 	User.findById(req.session.userId)
 		.exec(function (error, user) {
 			if (error) {
+				res.render('profile', { error: "Problem getting profile" });
 				return next(error);
 			}
 			else {
 				if (user === null) {
-					let err = new Error ('Not Authorized');
+					let err = new Error ( 'Not Authorized');
 					err.status = 400;
+					res.render('profile', { error: "Not Authorized" });
 					return next(err);
 				}
 				else {
-					return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email)
+					res.render('profile', { username: req.session.username });
+					console.log (req.session.username);
+					console.log(req.session.userId);
 				}
 			}
 		});
