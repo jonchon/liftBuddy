@@ -1,0 +1,89 @@
+img {
+	max-width: 40px;
+	max-height: 40px;
+}
+select {
+	position: absolute;
+	width: 430px;
+	border: none;
+	border-radius: 4px;
+	padding: 15px 20px;
+	background-color: #444;
+	color: white;
+	font-size: 20px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+#workout-container {
+	position: fixed;
+	top: 200px;
+	left: 250px;
+}
+#workout-options {
+	position: fixed;
+	top: 300px;
+	left: 100px;
+}
+#custom-container {
+	position: fixed;
+	top: 145px;
+	right: 350px;
+}
+#custom-options {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	top: 300px;
+	right: 100px;
+	background-color: red;
+}
+#arrow-container {
+	position: fixed;
+	height: 160px;
+	width: 60px;
+	left: calc(50% - 30px);
+	top: 350px;
+}
+.arrow {
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+#create-container {
+	position: fixed;
+	height: 30px;
+	width: 373px;
+	right: 80px;
+	top: 245px;
+}
+#sign-container {
+	position: fixed;
+	width: 40px;
+	height: 105px;
+	top: 145px;
+	right: 355px;
+}
+.sign {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.logout {
+	height: 40px;
+	width: 100px;
+	position: fixed;
+	right: 15px;
+	top: 28px;
+	background-color: #8ca9d8;
+	border-radius: 10px;
+	text-align: center;
+}
+.logout-child {
+	position: absolute;
+	width: 100px;
+	margin-top: 10px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}

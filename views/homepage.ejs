@@ -2,182 +2,25 @@
 <html>
 <head>
 	<title>Homepage</title>
-	<style>
-	html, body {
-			width: 100%;
-			height: 100%;
-			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			color: #444444;
-			-webkit-font-smoothing: antialiased;
-		}
-		h1 {
-			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			font-size: 60px;
-			color: #444;
-		}
-		.bg {
-			height: 180%;
-			width: 100%;
-			bottom: 0%;
-			background-color: #CFB6B6;
-			position: absolute;
-			text-align: center;
-			margin-left: -8px;
-			top: 0%;
-		}
-		.bgcontainer {
-			background-image: url(https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214);
-			height: 100px;
-			background-position: absolute;
-			background-attachment: fixed;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: fixed;
-			top: 0%;
-			bottom: 0%;
-			left: 0%;
-			right: 0%;
-		}
-		#menu {
-			width: 430px;
-			height: 150px;
-			background-image: url("http://www.images.searchpointer.com/steel/8583/1.jpg");
-			background-position: fixed;
-			background-attachment: relative;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: fixed;
-			left: 50%;
-			margin-left: -215px;
-			clip-path: polygon(0 0, 100% 0, calc(100% - 15%) 100%, 15% 100%);
-			border-radius: 80px;
-		}
-		#menu_text {
-			color: #444;
-			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			-webkit-font-smoothing: antialiased;
-			font-size: 60px;
-			font-weight: bold;
-			position: absolute;
-			right: 50%;
-			top: -30%;
-			margin: auto;
-			margin-right: -29.5%;
-			margin-top: 20%;
-		}
-		#login{
-			background-color: #1A1B1D;
-			width: 75px;
-			height: 30px;
-			border: 2px solid black;
-			display: block;
-			padding: 70px 0;
-		  	text-align: center;
-		  	font-family: sans-serif;
-		 	font-weight: bold;
-		 	font-size: 13px;
-		 	background: #FF9900;
-			color: #000000;
-		  	border-radius: 150px;
-		  	padding: 0 15px 0 15px;
-		  	display: inline-block;
-		  	position: absolute;
-		  	right: 0px;
-		  	bottom: 20px;
-		  	margin-right: 5px;
-		}
-		#login:hover {
-			background-color: pink;
-		}
-		#child {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			width: 50%;
-			height: 50%;
-			margin: auto;
-		}
-		#create-account {
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
-			margin-right: 5px;
-			margin-bottom: 3px;
-		}
-		#container {
-			position: fixed;
-			width: 200px;
-			height: 60px;
-			bottom: 5px;
-			right: 5px;
-			margin-top: -180px;
-			margin-left: -150px;
-			margin-right: 5px;
-			margin-bottom: 5px;
-			background: rgba(175, 204, 219, 0.7);
-			border-radius: 3px;
-			border: 1px solid #ccc;
-			box-shadow: 0 1px 2px rgba(0,0,0, .1);
-		}
-		a {
-			color: white;
-			text-decoration: none;
-		}
-		a:link {
-			color: white;
-			text-decoration: none;
-		}
-		a:visited {
-			color: white;
-			text-decoration: none;
-		}
-		a:hover {
-			color: red;
-			text-decoration: none;
-		}
-		#text_box_title {
-			position: absolute;
-			height: 150px;
-			width: 90%;
-			background-color: #A9B6CE;
-			margin-top: 100px;
-			display: inline-block;
-			margin-left: -45%;
-			margin-top: 150px;
-			text-align: center;
-		}
-		#text_box {
-			position: absolute;
-			width: 90%;
-			height: 1000px;
-			background-color: #90B3D3;
-			margin-top: 100px;
-			display: inline-block;
-			margin-left: -45%;
-			margin-top: 300px;
-			text-align: center;
-		}
-		#logout {
-			position: fixed;
-			height: 20px;
-			width: 300px;
-			color: white;
-			background-color: red;
-			text-align: center;
-			left: 50%;
-			margin-left: -150px;
-			top: 20px;
-		}
-	</style>
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/mainpage.css">
+	<link rel="stylesheet" href="css/homepage.css">
 </head>
 <body>
-	<div class="bg">
+	<div class="bg homepage">
 		<div id="text_box_title">
 			<h1>Hello! Welcome to liftBuddy</h1>
 		</div>
 		<div id="text_box">
+			liftBuddy is a web app designed to allow users to create their own workout routines. <br>
+			By selecting different exercises available, users can create custom workouts that fit their own needs.<br><br>
+			TODO: <br>
+			(express-session) Work on allowing user selection to save to their personal workouts and sessions <br>
+			(jQuery) Learn how to use jQuery in order to make selections <br>
+			(jQuery) Try to figure out how to allow users to add their own options and name their own workout routines <br>
+			(jQuery) If already logged in, make it so that the login/create user redirects to homepage and take out login/create user options from homepage and replace with logout <br>
+			(unknown) Sort workouts alphabetically (even when inserting) <br>
+			(SpotifyAPI) Connect Spotify and allow users to assign playlists to workouts <br>
 		</div>
 		<div class="bgcontainer">
 		</div>

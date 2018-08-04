@@ -2,113 +2,25 @@
 <html>
 <head>
 	<title>Add Workout</title>
-	<style>
-		html, body {
-			width: 100%;
-			height: 100%;
-			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			color: #444444;
-			-webkit-font-smoothing: antialiased;
-		}
-		select {
-			border: none;
-			border-radius: 4px;
-			padding: 15px 20px;
-			background-color: #444;
-			color: white;
-			font-size: 20px;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-		}
-		.bg {
-			height: 100%;
-			width: 100%;
-			bottom: 0%;
-			background-color: white;
-			position: absolute;
-		}
-		.container {
-			background-image: url(https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214);
-			height: 100px;
-			background-position: absolute;
-			background-attachment: fixed;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: fixed;
-			top: 0%;
-			bottom: 0%;
-			left: 0%;
-			right: 0%;
-		}
-		#menu {
-			width: 430px;
-			height: 150px;
-			background-image: url("http://www.images.searchpointer.com/steel/8583/1.jpg");
-			background-position: relative;
-			background-attachment: relative;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: fixed;
-			left: 50%;
-			margin-left: -215px;
-			clip-path: polygon(0 0, 100% 0, calc(100% - 15%) 100%, 15% 100%);
-			border-radius: 80px;
-		}
-		#menu_text {
-			color: #444;
-			font-family: "Helvetica Neue", Helvetica, sans-serif;
-			-webkit-font-smoothing: antialiased;
-			font-size: 60px;
-			font-weight: bold;
-			position: absolute;
-			right: 50%;
-			top: -30%;
-			margin: auto;
-			margin-right: -29.5%;
-			margin-top: 20%;
-		}
-		#workout {
-			position: fixed;
-			top: 200px;
-			left: 30%;
-			margin-left: -1%;
-		}
-		#options {
-			position: fixed;
-			top: 300px;
-			left: 25%;
-		}
-		.logout {
-			height: 40px;
-			width: 100px;
-			position: fixed;
-			right: 15px;
-			top: 28px;
-			background-color: #8ca9d8;
-			border-radius: 10px;
-			text-align: center;
-		}
-		.logout-child {
-			position: abolute;
-			margin-top: 10px;
-			color: white;
-			font-weight: bold;
-		}
-	</style>
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/mainpage.css">
+	<link rel="stylesheet" href="css/profile.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../js/profile.js"></script>
 </head>
 <body>
-	<div class="bg">
-		<div class="container">
+	<div class="bg profile">
+		<div class="bgcontainer">
 		</div>
-		<a href="">
+		<a href="/">
 			<div id="menu">
 				<div id="menu_text">
 					liftBuddy
 				</div>
 			</div>
 		</a>
-		<div id="workout">
-			<select id="workout" name="workout" size=1>
+		<div id="workout-container">
+			<select id="workout" name="workout" size=1 style="width: auto;">
 				<option value="legs">Legs</option>
 				<option value="chest">Chest</option>
 				<option value="back">Back</option>
@@ -117,7 +29,36 @@
 				<option value="cardio">Cardio</option>
 			</select>
 		</div>
-		<div id="options">
+		<div id="custom-container">
+			<select id="custom" name="custom" size=3 style="width: auto; min-width: 130px;">
+				<option value="workout-1">Workout 1</option>
+			</select>
+		</div>
+		<div id="arrow-container">
+			<div class="arrow">
+				<img src="../images/left-arrow.png">
+			</div>
+			<div class="arrow">
+				<img src="../images/right-arrow.png">
+			</div>
+		</div>
+		<div id="create-container" style="visibility: hidden;">
+			<input type="text" name="new-workout" placeholder="New Workout" style="top: 0;">
+			<div class="sign" name="exit" style="top: 10px; right: 10px;">
+				<img src="../images/x.jpg">
+			</div>
+		</div>
+		<div id="sign-container">
+			<div class="sign" name="plus">
+				<img src="../images/plus.png">
+			</div>
+			<div class="sign" name="minus" style="top: 75px">
+				<img src="../images/minus.png" style="bottom: 0;">
+			</div>
+		</div>
+		<div id="custom-options">
+		</div>
+		<div id="workout-options">
 			<select id="legs" name="legs" size=10 multiple>
 				<option value="front-squat">Front Squat</option>
 				<option value="back-squat">Back Squat</option>
@@ -139,6 +80,130 @@
 				<option value="standing-calf-raises">Standing Calf Raises</option>
 				<option value="seated-calf-raises">Seated Calf Raises</option>
 				<option value="donkey-calf-raises">Donkey Calf Raises</option>
+			</select>
+			<select id="chest" name="chest" size=10 multiple style="visibility: hidden;">
+				<option value="dumbbell-bench-press">Dumbbell Bench Press</option>
+				<option value="pushup">Pushup</option>
+				<option value="dumbbell-flyes">Dumbbell Flyes</option>
+				<option value="incline-dumbbell-press">Incline Dumbbell Press</option>
+				<option value="low-cable-crossover">Low Cable Crossover</option>
+				<option value="decline-dumbbell-flyes">Decline Dumbbell Flyes</option>
+				<option value="Dips">Dips</option>
+				<option value="barbell-bench-press">Barbell Bench Press</option>
+				<option value="body-weight-flyes">Body Weight Flyes</option>
+				<option value="incline-cable-flyes">Incline Table Flyes</option>
+				<option value="decline-barbell-bench-press">Decline Barbell Bench Press</option>
+				<option value="incline-dumbbell-bench-press">Incline Dumbbell Bench Press</option>
+				<option value="incline-pushup">Incline Pushup</option>
+				<option value="incline-dumbbell-flyes">Incline Dumbbell Flyes</option>
+			</select>
+			<select id="back" name="back" size=10 multiple style="visibility: hidden;">
+				<option value="deadlift">Deadlift</option>
+				<option value="pullup">Pullup</option>
+				<option value="romanian-deadlift">Romanian Deadlift</option>
+				<option value="pallof-press-iso-hold">Pallof Press Iso Hold</option>
+				<option value="incline-dumbbell-row">Incline Dumbbell Row</option>
+				<option value="chinup">Chinup</option>
+				<option value="trap-bar-deadlift">Trap-Bar Deadlift</option>
+				<option value="alternating-dumbbell-row">Alternating Dumbbell Row</option>
+				<option value="inverted-row">Inverted Row</option>
+				<option value="snatch-grip-rack-deadlift">Snatch-Grip Rack Deadlift</option>
+				<option value="swiss-ball-leg-curl">Swiss Ball Leg Curl</option>
+				<option value="wide-grip-pullup">Wide Grip Pullup</option>
+				<option value="landmine-one-arm-row">Landmine One Arm Row</option>
+				<option value="towel-cable-row">Towel Cable Row</option>
+				<option value="rotational-inverted-row">Rotational Inverted Row</option>
+				<option value="burpee">Burpee</option>
+				<option value="pike-up-to-superman">Pike-Up to Superman</option>
+				<option value="lying-lateral-raise">Lying Lateral Raise</option>
+				<option value="hang-clean">Hang Clean</option>
+				<option value="back-extension">Back Extension</option>
+				<option value="seated-cable-row">Seated Cable Row</option>
+				<option value="bentover-reverse-flye">Bentover Reverse Flye</option>
+				<option value="aquaman">Aquaman</option>
+				<option value="superman">Superman</option>
+				<option value="suspension-trainer-chinup">Suspension Trainer Chinup</option>
+				<option value="barbell-back-squat">Barbell Back Squat</option>
+				<option value="suspension-trainer-inverted-row">Suspension Trainer Inverted Row</option>
+				<option value="swiss-ball-reverse-back-extension">Swiss Ball Reverse Back Extension</option>
+				<option value="yates-row">Yates Row</option>
+				<option value="bentover-row-to-neck">Bentover Row to Neck</option>
+			</select>
+			<select id="shoulder" name="shoulder" size=10 multiple style="visibility: hidden;">
+				<option value="barbell-overhead-press">Barbell Overhead Press</option>
+				<option value="standing-dumbbell-fly">Standing Dumbbell Fly</option>
+				<option value="face-pull">Face Pull</option>
+				<option value="high-pull">High Pull</option>
+				<option value="seated-dumbbell-clean">Seated Dumbbell Clean</option>
+				<option value="trap-raise">Trap Raise</option>
+				<option value="clean-and-press">Clean and Press</option>
+				<option value="snatch-grip-high-pull">Snatch Grip High Pull</option>
+				<option value="band-lateral-raise">Band Lateral Raise</option>
+				<option value="band-front-raise">Band Front Raise</option>
+				<option value="band-bent-over-lateral-raise">Band Bent-Over Lateral Raise</option>
+				<option value="band-w-raise">Band W Raise</option>
+				<option value="suspension-trainer-pike-pushup">Suspension Trainer Pike pushup</option>
+				<option value="suspension-trainer-y-raise">Suspension Trainer Y Raise</option>
+				<option value="suspension-trainer-rear-delt-raise">Suspension Trainer Rear-Delt Raise</option>
+				<option value="hindu-pushup">Hindu Pushup</option>
+				<option value="pike-press">Pike Press</option>
+				<option value="dip">Dip</option>
+				<option value="lateral-plank-walk">Lateral Plank Walk</option>
+				<option value="dumbbell-neutral-grip-overhead-press">Dumbbell Neutral Grip Overhead Press</option>
+				<option value="dumbbell-raise-complex">Dumbbell Raise Complex</option>
+				<option value="snatch-grip-low-pull">Snatch-Grip Low Pull</option>
+				<option value="snatch-grip-shrug-pull">Snatch-Grip Shrug Pull</option>
+				<option value="rack-deadlift">Rack Deadlift</option>
+				<option value="farmer's-walk">Farmer's Walk</option>
+				<option value="dumbbell-deadlift-shrug-combo">Dumbbell Deadlift/Shrug Combo</option>
+				<option value="dumbbell-bent-over-lateral-raise">Dumbbell Bent-Over Lateral Raise</option>
+				<option value="incline-bench-press">Incline Bench Press</option>
+				<option value="machine-shoulder-press">Machine Shoulder Press</option>
+				<option value="bent-over-reverse-flye">Bent Over Reverse Flye</option>
+			</select>
+			<select id="arms" name="arms" size=10 multiple style="visibility: hidden;">
+				<option value="hammer-curl">Hammer Curl</option>
+				<option value="dip">Dip</option>
+				<option value="close-grip-curl">Close Grip Curl</option>
+				<option value="chinup">Chinup</option>
+				<option value="suspension-trainer-tricepts-extension">Suspension Trainer Triceps Extension</option>
+				<option value="diamond-pushup">Diamond Pushup</option>
+				<option value="neutral-grip-triceps-extension">Neutral Grip Triceps Extension</option>
+				<option value="poundstone-curl">Poundstone Curl</option>
+				<option value="suspension-trainer-rotational-inverted-row">Suspension Trainer Rotational Inverted Row</option>
+				<option value="suspension-trainer-biceps-curl">Suspension Trainer Biceps Curl</option>
+				<option value="close-grip-pushup">Close Grip Pushup</option>
+				<option value="behind-the-back-cable-curl">Behind the Back Cable Curl</option>
+				<option value="ez-bar-preacher-curl">EZ-Bar Preacher Curl</option>
+				<option value="reverse-curl">Reverse Curl</option>
+				<option value="wide-grip-curl">Wide Grip Curl</option>
+				<option value="overhead-press">Overhead Press</option>
+				<option value="pullover-triceps-extension">Pullover/Triceps Extension</option>
+				<option value="conventional-curl">Conventional Curl</option>
+				<option value="side-curl-with-band">Side Curl with Band</option>
+				<option value="decline-triceps-extension">Decline Triceps Extension</option>
+				<option value="close-grip-bench-press">Close Grip Bench Press</option>
+				<option value="lying-triceps-extension">Lying Triceps Extension</option>
+				<option value="face-pull">Face Pull</option>
+				<option value="underhand-kickback">Underhand Kickback</option>
+				<option value="tate-press">Tate Press</option>
+				<option value="high-pull">High Pull</option>
+				<option value="band-lateral-raise">Band Lateral Raise</option>
+				<option value="hindu-pushup">Hindu Pushup</option>
+				<option value="seated-dumbbell-clean">Seated Dumbbell Clean</option>
+				<option value="standing-dumbbell-fly">Standing Dumbbell Fly</option>
+			</select>
+			<select id="cardio" name="cardio" size=10 multiple style="visibility:hidden;">
+				<option value="elliptical">Elliptical</option>
+				<option value="running">Running</option>
+				<option value="stair-climber">Stair Climber</option>
+				<option value="jumping-rope">Jumping Rope</option>
+				<option value="kettlebells">Kettlebells</option>
+				<option value="cycling">Cycling</option>
+				<option value="swimming">Swimming</option>
+				<option value="rowing">Rowing</option>
+				<option value="high-intensity-interval-training">High-intensity Interval Training</option>
+				<option value="sprinting">Sprinting</option>
 			</select>
 		</div>
 		<a href='logout'>

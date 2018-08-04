@@ -17,6 +17,7 @@ mongoose.connect('mongodb://localhost/liftBuddy')
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
+app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
 app.use(session({
