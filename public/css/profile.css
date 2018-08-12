@@ -31,11 +31,10 @@ select {
 }
 #custom-options {
 	position: fixed;
-	width: 100px;
-	height: 100px;
+	width: 430px;
+	height: 280px;
 	top: 300px;
 	right: 100px;
-	background-color: red;
 }
 #arrow-container {
 	position: fixed;
@@ -46,8 +45,7 @@ select {
 }
 .arrow {
 	position: relative;
-	width: 100px;
-	height: 100px;
+	cursor: pointer;
 }
 #create-container {
 	position: fixed;
@@ -86,4 +84,12 @@ select {
 	color: white;
 	font-weight: bold;
 	text-align: center;
+}
+.avatar {
+	position: fixed;
+	height: 200px;
+	width: 400px;
+	bottom: 0;
+	right: 0;
+	background-color: pink;
 }

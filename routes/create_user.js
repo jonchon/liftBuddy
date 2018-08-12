@@ -1,9 +1,9 @@
 //log in an create user code based off of https://github.com/Createdd/authenticationIntro
-const mongoose = require('mongoose');
-const express = require('express');
-const bodyParser = require('body-parser');
-const User = require('../models/user');
-const router = express.Router();
+const mongoose	 	= require('mongoose');
+const express 		= require('express');
+const bodyParser 	= require('body-parser');
+const User 			= require('../models/user');
+const router 		= express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true })); 
 
@@ -37,7 +37,8 @@ router.post('/', async (req, res, next) => {
 				else {
 					req.session.userId = user._id;
 					req.session.username = req.body.username;
-					return res.redirect('/profile');
+					req.session.email= req.body.email;
+					return res.redirect('/');
 				}
 			});
 		}

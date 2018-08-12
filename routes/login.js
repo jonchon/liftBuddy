@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const express = require('express');
-const bodyParser = require('body-parser');
-const User = require('../models/user');
-const router = express.Router();
+const mongoose 		= require('mongoose');
+const express 		= require('express');
+const bodyParser 	= require('body-parser');
+const User			= require('../models/user');
+const router 		= express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true })); 
 
@@ -20,7 +20,13 @@ router.post('/', async function(req, res, next) {
 				return next(err);
 			}
 			else {
-				return res.redirect('/profile');
+				req.session.userId = user._id;
+				User.findById(req.session.userId, function (err, user) {
+					if (err) return handleError(err);
+					req.session.username = user.username;
+				});
+				req.session.email = req.body.email;
+				return res.redirect('/');
 			}
 		});
 	}
