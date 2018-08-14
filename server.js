@@ -2,7 +2,6 @@ const mongoose 		= require('mongoose');
 const express 		= require('express');
 const session 		= require('express-session');
 const MongoStore 	= require('connect-mongo')(session);
-const cookieParser 	= require('cookie-parser');
 
 const login 		= require('./routes/login');
 const create_user 	= require('./routes/create_user');
@@ -20,7 +19,6 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
 app.use(express.static(__dirname + '/public'));
-app.use(cookieParser());
 
 app.use(session({
 	cookieName: 'session',
@@ -46,7 +44,7 @@ app.get('/', function(req, res) {
 			}
 			else {
 				res.locals.userId = req.session.userId;
-				console.log("server.js");
+				req.session.username = user.username;
 				res.render('profile', { name: req.session.username });
 			}
 		});

@@ -87,9 +87,20 @@ select {
 }
 .avatar {
 	position: fixed;
-	height: 200px;
-	width: 400px;
-	bottom: 0;
-	right: 0;
-	background-color: pink;
+	height: 50px;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
+	top: 200px;
+	text-align: center;
+	border-radius: 25px;
+	background-color: #8ca9d8;
+}
+.avatar-child {
+	position: absolute;
+	width: 200px;
+	margin-top: 15px;
+	color: white;
+	font-weight: bold;
+
 }

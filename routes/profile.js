@@ -20,8 +20,6 @@ router.get('/', function (req, res, next) {
 				}
 				else {
 					res.render('profile', { username: req.session.username });
-					console.log (req.session.username);
-					console.log(req.session.userId);
 				}
 			}
 		});

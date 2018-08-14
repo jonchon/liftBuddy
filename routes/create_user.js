@@ -36,8 +36,7 @@ router.post('/', async (req, res, next) => {
 				}
 				else {
 					req.session.userId = user._id;
-					req.session.username = req.body.username;
-					req.session.email= req.body.email;
+					req.session.email = req.body.email;
 					return res.redirect('/');
 				}
 			});
