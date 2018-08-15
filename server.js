@@ -37,7 +37,6 @@ app.use('/create_user', create_user);
 
 app.get('/', function (req, res) {
 	if (req.session && req.session.userId) {
-		console.log("fuck");
 		User.findOne({email: req.session.email}, function(err, user) {
 			if (!user) {
 				req.session.reset();
@@ -51,12 +50,11 @@ app.get('/', function (req, res) {
 		});
 	}
 	else {
-		console.log("shit");
 		res.render('homepage');
 	}
 });
 
-app.post('/names', function (req, res){
+app.post('/names', function (req, res) {
 	if (req.session && req.session.userId) {
 		User.findOne({email: req.session.email}, function(err, user) {
 			user.custom.push(JSON.stringify(req.body));
@@ -75,6 +73,24 @@ app.get('/names', function (req, res) {
 		})
 	}
 })
+
+app.put('/names:id', function (req, res) {
+	if (req.session && req.session.userId) {
+		User.findOne({email: req.session.email}, function (err, user) {
+			let name = req.params.id.substr(1);
+			let val = name.replace(/ /g, '-');
+			let data = {};
+			data.name = name;
+			data.value = val;
+			let ind = user.custom.indexOf(JSON.stringify(data));
+			user.custom.splice(ind, 1);
+			user.save(function(err, updatedUser) {
+				if (err) return handleError(err);
+				res.send(updatedUser);
+			})
+		})
+	}
+});
 
 app.get('/logout', function (req, res, next) {
 	if(req.session) {
