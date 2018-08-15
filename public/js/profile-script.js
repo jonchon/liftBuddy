@@ -28,6 +28,19 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 						value: val,
 						text: name
 					}));
+					let data = {};										//Storing to POST
+					data.name = name;
+					data.value = val;
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+						contentType: 'application/json',
+						url: 'http://localhost:3000/names',
+						success: function(data) {
+							console.log("success");
+							console.log(JSON.stringify(data));
+						}
+					})
 					$(`select option[value=${val}]`).attr("selected", true);
 					$('#custom-options').append($(`<select id=${val} name=${val} size=10>`));
 				}

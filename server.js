@@ -24,19 +24,20 @@ app.use(session({
 	cookieName: 'session',
 	secret: 'happy days',
 	resave: true,
-	saveUninitialized: false,
+	saveUninitialized: true,
 	store: new MongoStore ({
-		mongooseConnection: db
+		mongooseConnection: db,
+		ttl: 2 * 24 * 60 * 60
 	})
 }));
 
 app.use(express.json());
 app.use('/login', login);
 app.use('/create_user', create_user);
-app.use('/profile', profile);
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 	if (req.session && req.session.userId) {
+		console.log("fuck");
 		User.findOne({email: req.session.email}, function(err, user) {
 			if (!user) {
 				req.session.reset();
@@ -50,9 +51,30 @@ app.get('/', function(req, res) {
 		});
 	}
 	else {
+		console.log("shit");
 		res.render('homepage');
 	}
 });
+
+app.post('/names', function (req, res){
+	if (req.session && req.session.userId) {
+		User.findOne({email: req.session.email}, function(err, user) {
+			user.custom.push(JSON.stringify(req.body));
+			user.save(function(err, updatedUser) {
+				if (err) return handleError(err);
+				res.send(updatedUser);
+			})
+		})
+	}
+});
+
+app.get('/names', function (req, res) {
+	if (req.session && req.session.userId) {
+		User.findOne({email: req.session.email}, function (err, user) {
+			res.send(user.custom);
+		})
+	}
+})
 
 app.get('/logout', function (req, res, next) {
 	if(req.session) {

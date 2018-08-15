@@ -45,6 +45,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 					return callback(null, user);
 				}
 				else {
+					console.log("this is weird");
 					return callback();
 				}
 			})

@@ -4,7 +4,7 @@
 	height: 30px;
 	background: red;
 	text-align: center;
-	top: 12%;
+	top: calc(40% - 210px);
 	left: 50%;
 	margin-left: -150px;
 }

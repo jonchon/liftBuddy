@@ -15,9 +15,11 @@
 			liftBuddy is a web app designed to allow users to create their own workout routines. <br>
 			By selecting different exercises available, users can create custom workouts that fit their own needs.<br><br>
 			TODO: <br>
-			(express-session) Work on allowing user selection to save to their personal workouts and sessions (maybe Window.sessionStorage)<br>
+			(express-session) Work on allowing user selection to save to their personal workouts and sessions (cookies) <br>
 			>> (express-session) Save values from HTML select form into sessions by potentially sending values to backend in mongoDB. <br>
 			(SpotifyAPI) Connect Spotify and allow users to assign playlists to workouts <br>
+			(bug) pressing - does not remove the workout options. Don't forget to adjust mongoDB as well when minus is pressed
+			(bug) bad bug that makes it so that errors in create user/login doesnt work anymore. this is due to trying to save user data and the POST/GET requests and authentification with bcrypt hashing
 		</div>
 		<div class="bgcontainer">
 		</div>

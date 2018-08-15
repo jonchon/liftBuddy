@@ -16,10 +16,10 @@
 		});	
 	</script>
 </head>
-<body>
+<body onload="write_error()">
 	<div class="bgcontainer" style="height: 100%; background-position: fixed;">
 		<% if(typeof error !== 'undefined') { %>
-			<div class="error" style="top: 22.3%">
+			<div class="error" style="top: calc(50% - 210px)">
 				<div class="error_child">
 					<%= error %>
 				</div>
