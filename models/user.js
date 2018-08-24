@@ -1,7 +1,7 @@
 //log in an create user code based off of https://github.com/Createdd/authenticationIntro
 const mongoose 		= require('mongoose');
 const bcrypt 		= require('bcrypt');
-
+const Schema 		= mongoose.Schema;
 //defining the schema for log in credentials
 const UserSchema = new mongoose.Schema({
 	email: {
@@ -24,8 +24,8 @@ const UserSchema = new mongoose.Schema({
 		type: [String]
 	},
 	customOption: {
-		type: [String]
-	}
+		type: [Schema.Types.Mixed]
+	},
 });
 
 //see if user exists in the database
@@ -55,6 +55,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 //hash password before saving to MongoDB
 UserSchema.pre('save', function(next) {
 	let user = this;
+	if (!user.isModified('password')) return next();
 	bcrypt.hash(user.password, 10, function (err, hash) {
 		if (err) {
 			return next(err);
