@@ -21,8 +21,8 @@ router.post('/', async (req, res, next) => {
 		}
 		//verify that password & passwordConf matches
 		if (req.body.password !== req.body.passwordConf) {
-			let err = new Error('Passwords do not match');
-			err.status = 400;
+			let err 	= new Error('Passwords do not match');
+			err.status 	= 400;
 			res.render('create_user', { error: "Passwords do not match" });
 			return next(err);
 		}
@@ -37,8 +37,8 @@ router.post('/', async (req, res, next) => {
 					//return next(err)
 				}
 				else {
-					req.session.userId = user._id;
-					req.session.email = req.body.email;
+					req.session.userId 	= user._id;
+					req.session.email 	= req.body.email;
 					return res.redirect('/');
 				}
 			});

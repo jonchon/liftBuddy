@@ -15,7 +15,7 @@ let custom_names = [];
 $(document).ready(function() {
 	$.ajax({											//Adds previous workouts made
 		type: 'GET',
-		url: 'http://localhost:3000/names',
+		url: 'http://localhost:3000/custom',
 		success: function(data) {
 			for (i in data) {
 				let res = $.parseJSON(data[i]);
@@ -62,32 +62,33 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 		})
 		$('[name="new-workout"]').on('keypress', function(e) {
 			let code = e.keyCode || e.which;
-			if (code === 13) {											//13 is enter/return key
-				let name = $('[name="new-workout"]').val();
-				let val = name.replace(/ /g, '-');						//replace all spaces with - 
-				let to_add_ind 	= $('[name="custom"] option:selected').index();		//index of the location of custom exercise
+			if (code === 13) {															//13 is enter/return key
+				let name 		= $('[name="new-workout"]').val();
+				let val 		= name.replace(/ /g, '-');								//replace all spaces with - 
+				let to_add_ind 	= $('[name="custom"] option:selected').index() + 1;		//index of the location of custom exercise
 				$('[name="new-workout"]').val('');
 				for (i in custom_names) {
-					if (name == custom_names[i]) {
-						alert(`${name} already exists`);
+					if (name === custom_names[i]) {
+						if (name != "")
+							alert(`${name} already exists`);
 						return;
 					}
 				}
+				custom_names.push(name);
 				if (name) {
 					$('[name="custom"]').append($('<option>', {
 						value: val,
 						text: name
 					}));
-					let data	= {};										//Storing to POST
+					let data	= {};										//Adds new custom with blank array in customOptions
 					data.name 	= name;
 					data.value	= val;
-					data.index	= to_add_ind;
 					$.ajax({
 						type: 'POST',
 						data: JSON.stringify(data),
 						contentType: 'application/json',
-						url: 'http://localhost:3000/names'
-					})
+						url: 'http://localhost:3000/custom'
+					});
 					$(`select option[value=${val}]`).attr("selected", true);
 					$('#custom-options').append($(`<select id=${val} name=${val} size=10>`));
 				}
@@ -95,17 +96,24 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 			}
 		});
 	});
-	$('[name="minus"]').click(function() {
-		let remove = $('[name="custom"] option:selected');
+	$('[name="minus"]').click(function() {								//deals with minus
+		let remove 	= $('[name="custom"] option:selected');
+		let data	= {};
+		data.name 	= remove.text();
+		data.value 	= remove.val();
+		data.index 	= remove.index();									//deleted before added to mongo
 		remove.remove();
-		$.ajax({
+		$(`#${data.value}`).css('visibility', 'hidden');
+		custom_names.splice(remove.index(), 1);
+		$.ajax({														//Updates custom and customOptions and deletes corresponding array entries
 			type: 'PUT',
-			url: 'http://localhost:3000/names:' + remove.text(),
-			success: function(data) {
-			}
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			url: 'http://localhost:3000/custom'
 		});
 	});
 });
+
 $(document).ready(function() {											//Deals with displaying different select forms for custom side
 	$('#custom').change(function() {									
 		let value = $(this).val();
@@ -120,33 +128,41 @@ $(document).ready(function() {											//Deals with displaying different selec
 	})
 })
 
-$(document).ready(function() {												//Deals with the right and left arrow
+$(document).ready(function() {													//Deals with the right and left arrow
 	$('[name="left-arrow"]').click(function() {
-		let to_remove 	= $('[name="custom"] option:selected').val();		//selected option from custom workout
-		$(`[name=${to_remove}] option:selected`).remove();					//selected excercise from selected custom workout
+		let custom 			= $('[name="custom"] option:selected').val();		//selected option from custom workout
+		let custom_ind		= $('[name="custom"] option:selected').index();		//index inside of the custom
+		let to_remove_ind 	= $(`[name=${custom}] option:selected`).index();	//index inside of custom options
+		$(`[name=${custom}] option:selected`).remove();							//selected excercise from selected custom workout
+		let data			= {};
+		data.ind1			= custom_ind;
+		data.ind2			= to_remove_ind;
+		$.ajax({
+			type: 'PUT',
+			url: 'http://localhost:3000/del_options',
+			data: JSON.stringify(data),
+			contentType: 'application/json'
+		});
 	});
 	$('[name="right-arrow"]').click(function() {
-		let type 		= $('[name="workout"] option:selected').val();		//either legs, arms, back, etc.
-		let to_add 		= $(`[name=${type}] option:selected`).val();		//specific workout val from ^^
-		let to_add_name = $(`[name=${type}] option:selected`).text();		//specific workout name from ^^
-		let to_add_ind 	= $('[name="custom"] option:selected').index();		//index of the location of custom exercise
-		let location 	= $('[name="custom"] option:selected').val();		//select location where we add exercise
+		let type 			= $('[name="workout"] option:selected').val();		//either legs, arms, back, etc.
+		let to_add 			= $(`[name=${type}] option:selected`).val();		//specific workout val from ^^
+		let to_add_name 	= $(`[name=${type}] option:selected`).text();		//specific workout name from ^^
+		let to_add_ind 		= $('[name="custom"] option:selected').index();		//index of the location of custom exercise
+		let location 		= $('[name="custom"] option:selected').val();		//select location where we add exercise
 		$(`#${location}`).append($('<option>', {
 			value: to_add,
 			text: to_add_name
 		}));
-		let data 		= {}												//linked list
-		data.name 		= to_add_name;
-		data.value 		= to_add;
-		data.index 		= to_add_ind;
-		$.ajax({
+		let data 			= {};
+		data.name 			= to_add_name;
+		data.value 			= to_add;
+		data.index 			= to_add_ind;
+		$.ajax({															//adds exercise to customOptions
 			type: 'PUT',
 			url: 'http://localhost:3000/options',
 			data: JSON.stringify(data),
-			contentType: 'application/json',
-			success: function(data) {
-				console.log(data.name);
-			}
+			contentType: 'application/json'
 		})
 		$(`select option[value=${to_add}]`).attr("selected", true);
 	});

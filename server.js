@@ -5,14 +5,15 @@ const MongoStore 	= require('connect-mongo')(session);
 
 const login 		= require('./routes/login');
 const create_user 	= require('./routes/create_user');
+const custom 		= require('./routes/custom');
+const options		= require('./routes/options');
 const app 			= express();
 const User 			= require('./models/user');
 
-
 app.set('view engine', 'ejs');
 mongoose.connect('mongodb://localhost/liftBuddy')
-	.then(()=>console.log("connected to MongoDB..."))
-	.catch(err=>console.log("could not connect to MongoDB..."));
+	.then(()	=> console.log("connected to MongoDB..."))
+	.catch(err	=> console.log("could not connect to MongoDB..."));
 
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
@@ -33,6 +34,8 @@ app.use(session({
 app.use(express.json());
 app.use('/login', login);
 app.use('/create_user', create_user);
+app.use('/custom', custom);
+app.use('/options', options);
 
 app.get('/', function (req, res) {
 	if (req.session && req.session.userId) {
@@ -53,69 +56,18 @@ app.get('/', function (req, res) {
 	}
 });
 
-app.post('/names', function (req, res) {
-	if (req.session && req.session.userId) {
-		User.findOne({email: req.session.email}, function(err, user) {
-			user.custom.push(JSON.stringify(req.body));
-			user.customOption.push([]);
-			user.save(function(err, updatedUser) {
-				if (err) return handleError(err);
-				res.send(updatedUser);
-			});
-		});
-	}
-});
-
-app.get('/names', function (req, res) {
-	if (req.session && req.session.userId) {
-		User.findOne({email: req.session.email}, function (err, user) {
-			res.send(user.custom);
-		});
-	}
-});
-
-app.put('/names:id', function (req, res) {
-	if (req.session && req.session.userId) {
-		User.findOne({email: req.session.email}, function (err, user) {
-			let data 	= {};
-			data.name 	= req.params.id.substr(1);
-			data.value 	= data.name.replace(/ /g, '-');
-			let ind 	= user.custom.indexOf(JSON.stringify(data));
-			user.custom.splice(ind, 1);
-			user.save(function(err, updatedUser) {
-				if (err) return handleError(err);
-				res.send(updatedUser);
-			});
-		});
-	}
-});
-
-app.get('/options', function (req, res) {
+app.put('/del_options', function (req, res) {
 	User.findOne({email: req.session.email}, function (err, user) {
-		res.send(user.customOption);
-	})
-})
-
-app.put('/options', function (req, res) {
-	User.findOne({email: req.session.email}, function (err, user) {
-		let ind = req.body.index;
-		user.customOption[ind].push(JSON.stringify(req.body));
-		let i;
-		let j;
-		console.log(user.customOption.length);
-		console.log(user.customOption[ind].length);
-		for (i = 0; i < user.customOption.length; i++) {
-			for (j = 0; j < user.customOption[i].length; j++) {
-				console.log(i + ' ' + user.customOption[i][j]);
-			}
-		}
+		let ind1 = req.body.ind1;
+		let ind2 = req.body.ind2;
+		user.customOption[ind1].splice(ind2, 1);
 		user.markModified('customOption');
 		user.save(function(err, updatedUser) {
 			if (err) return handleError(err);
 			res.send(updatedUser);
 		});
 	});
-});
+})
 
 app.get('/logout', function (req, res, next) {
 	if(req.session) {

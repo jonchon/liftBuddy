@@ -22,8 +22,8 @@ router.post('/', async function(req, res, next) {
 				//return next(error);
 			}
 			else {
-				req.session.userId = user._id;
-				req.session.email = req.body.email;
+				req.session.userId 	= user._id;
+				req.session.email	= req.body.email;
 				return res.redirect('/');
 			}
 		});
