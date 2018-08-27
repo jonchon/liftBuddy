@@ -25,12 +25,4 @@ router.put('/', function (req, res) {
 	});
 });
 
-router.put('/', function (req, res) {
-	User.findOne({email: req.session.email}, function (err, user) {
-		let ind1 = req.body.ind1;
-		let ind2 = req.body.ind2;
-		console.log(ind1 + ' ' + ind2);
-	});
-})
-
 module.exports = router;

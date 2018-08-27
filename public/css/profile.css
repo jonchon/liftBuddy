@@ -35,7 +35,6 @@ select {
 	position: fixed;
 	top: 145px;
 	right: 350px;
-
 }
 #custom-options {
 	position: fixed;
@@ -110,5 +109,43 @@ select {
 	margin-top: 15px;
 	color: white;
 	font-weight: bold;
-
+}
+@media only screen and (max-width: 1140px) {
+	#custom-options {
+		right: 0px;
+	}
+	#l123, #c123, #b123, #s123, #a123, #ca123 {
+		width: 250px;
+	}
+}
+@media only screen and (max-width: 1000px) {
+	.avatar {
+		visibility: hidden;
+	}
+}
+@media only screen and (max-width: 900px) {
+	#custom-options {
+		top: 450px;
+		left: 0px;
+	}
+	#l123, #c123, #b123, #s123, #a123, #ca123 {
+		top: -140px;
+		left: -100px;
+	}
+	#workout-container {
+		top: 103px;
+		left: 0px;
+	}
+	#arrow-container {
+		top: 150px;
+		left: 330px;
+	}
+	#custom-container {
+		left: 250px;
+		top: 335px;
+	}
+	#sign-container {
+		left: 250px;
+		top: 230px;
+	}
 }

@@ -124,9 +124,9 @@ $(document).ready(function() {											//Deals with displaying different selec
 			else {
 				$(`#${(this).value}`).css("visibility", "hidden");
 			}
-		})
-	})
-})
+		});
+	});
+});
 
 $(document).ready(function() {													//Deals with the right and left arrow
 	$('[name="left-arrow"]').click(function() {
@@ -146,8 +146,8 @@ $(document).ready(function() {													//Deals with the right and left arrow
 	});
 	$('[name="right-arrow"]').click(function() {
 		let type 			= $('[name="workout"] option:selected').val();		//either legs, arms, back, etc.
-		let to_add 			= $(`[name=${type}] option:selected`).val();		//specific workout val from ^^
-		let to_add_name 	= $(`[name=${type}] option:selected`).text();		//specific workout name from ^^
+		let to_add 			= $(`#${type} option:selected`).val();		//specific workout val from ^^
+		let to_add_name 	= $(`#${type} option:selected`).text();		//specific workout name from ^^
 		let to_add_ind 		= $('[name="custom"] option:selected').index();		//index of the location of custom exercise
 		let location 		= $('[name="custom"] option:selected').val();		//select location where we add exercise
 		$(`#${location}`).append($('<option>', {

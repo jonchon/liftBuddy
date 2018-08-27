@@ -69,6 +69,27 @@ h1 {
 	margin-left: -45%;
 	margin-top: 150px;
 	text-align: center;
+	visibility: visible;
+}
+#text_box_title_small {
+	position: absolute;
+	height: 150px;
+	width: 90%;
+	background-color: #A9B6CE;
+	margin-top: 100px;
+	display: inline-block;
+	margin-left: -45%;
+	margin-top: 150px;
+	text-align: center;
+	visibility: hidden;
+}
+@media only screen and (max-width: 891px) {
+	#text_box_title {
+		visibility: hidden;
+	}
+	#text_box_title_small {
+		visibility: visible;
+	}
 }
 #text_box {
 	position: absolute;

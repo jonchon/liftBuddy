@@ -8,7 +8,7 @@ html, body {
 .bgcontainer {
 	background-image: url('../images/gym.png');
 	height: 100px;
-	background-position: absolute;
+	background-position: fixed;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
