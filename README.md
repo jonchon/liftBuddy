@@ -10,7 +10,7 @@ cd liftBuddy
 npm install
 
 follow these instructions for mac: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
-follow these instructions for windows: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+follow these instructions for windows: https://stackoverflow.com/questions/20796714/how-do-i-start-mongo-db-from-windows
 
 mongod
 
