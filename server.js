@@ -12,7 +12,7 @@ const User 			= require('./models/user');
 
 app.set('view engine', 'ejs');
 
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+mongoose.connect(process.env.MONGODB_URI, function (err, database) {
 	if (err) {
 		console.log(err);
 		process.exit(1);
