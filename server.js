@@ -11,12 +11,14 @@ const app 			= express();
 const User 			= require('./models/user');
 
 app.set('view engine', 'ejs');
-mongoose.connect('mongodb://localhost/liftBuddy')
-	.then(()	=> console.log("connected to MongoDB..."))
-	.catch(err	=> console.log("could not connect to MongoDB..."));
 
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+	if (err) {
+		console.log(err);
+		process.exit(1);
+	}
+	const db = database;
+})
 
 app.use(express.static(__dirname + '/public'));
 
