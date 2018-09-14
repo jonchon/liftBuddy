@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jonchon/liftBuddy#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
@@ -28,6 +29,7 @@
     "jquery": "^3.3.1",
     "jquery.scrollto": "^2.1.2",
     "mongoose": "^5.2.8",
+    "node": "^7.10.1",
     "nodemon": "^1.18.3"
   }
 }
