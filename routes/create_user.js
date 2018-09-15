@@ -29,12 +29,10 @@ router.post('/', async (req, res, next) => {
 		else {
 			User.create(userData, function (err, user) {
 				if (err) {
-					/*
 					let err = new Error(`${req.body.email} already exists`);
 					err.status = 400;
-					*/
 					res.render('create_user', {error: `${req.body.email} already exists`});
-					//return next(err)
+					return next(err)
 				}
 				else {
 					req.session.userId 	= user._id;
@@ -45,12 +43,10 @@ router.post('/', async (req, res, next) => {
 		}
 	}
 	else {
-		/*
 		let err = new Error('All fields required');
 		err.status = 400;
-		*/
 		res.render('create_user', {error: "All fields required"});
-		//return next(err);
+		return next(err);
 	}
 })
 
