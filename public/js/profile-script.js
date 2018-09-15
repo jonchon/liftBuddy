@@ -15,7 +15,7 @@ let custom_names = [];
 $(document).ready(function() {
 	$.ajax({											//Adds previous workouts made
 		type: 'GET',
-		url: 'http://localhost:3000/custom',
+		url: 'http://liftbuddy.heroku.com/custom',
 		success: function(data) {
 			for (i in data) {
 				let res = $.parseJSON(data[i]);
@@ -33,7 +33,7 @@ $(document).ready(function() {
 			}
 			$.ajax({									//Adds previous exercises
 				type: 'GET',
-				url: 'http://localhost:3000/options',
+				url: 'http://liftbuddy.heroku.com/options',
 				success: function(data) {
 					let i;
 					let j;
@@ -87,7 +87,7 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 						type: 'POST',
 						data: JSON.stringify(data),
 						contentType: 'application/json',
-						url: 'http://localhost:3000/custom'
+						url: 'http://liftbuddy.heroku.com/custom'
 					});
 					$(`select option[value=${val}]`).attr("selected", true);
 					$('#custom-options').append($(`<select id=${val} name=${val} size=10>`));
@@ -109,7 +109,7 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 			type: 'PUT',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
-			url: 'http://localhost:3000/custom'
+			url: 'http://liftbuddy.heroku.com/custom'
 		});
 	});
 });
@@ -139,7 +139,7 @@ $(document).ready(function() {													//Deals with the right and left arrow
 		data.ind2			= to_remove_ind;
 		$.ajax({
 			type: 'PUT',
-			url: 'http://localhost:3000/del_options',
+			url: 'http://liftbuddy.heroku.com/del_options',
 			data: JSON.stringify(data),
 			contentType: 'application/json'
 		});
@@ -160,7 +160,7 @@ $(document).ready(function() {													//Deals with the right and left arrow
 		data.index 			= to_add_ind;
 		$.ajax({															//adds exercise to customOptions
 			type: 'PUT',
-			url: 'http://localhost:3000/options',
+			url: 'http://liftbuddy.heroku.com/options',
 			data: JSON.stringify(data),
 			contentType: 'application/json'
 		})
