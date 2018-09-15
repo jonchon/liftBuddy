@@ -1,6 +1,6 @@
 //log in an create user code based off of https://github.com/Createdd/authenticationIntro
 const mongoose 		= require('mongoose');
-const bcrypt 		= require('bcrypt');
+const bcrypt 		= require('bcrypt-nodejs');
 const Schema 		= mongoose.Schema;
 //defining the schema for log in credentials
 const UserSchema = new mongoose.Schema({
@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
 		trim: true
 	},
 	username: {
-		type: String,
+		type: String,-
 		unique: true,
 		required: true,
 		trim: true
