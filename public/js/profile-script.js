@@ -15,7 +15,7 @@ let custom_names = [];
 $(document).ready(function() {
 	$.ajax({											//Adds previous workouts made
 		type: 'GET',
-		url: 'http://liftbuddy.heroku.com/custom',
+		url: 'http://liftbuddy.herokuapp.com/custom',
 		success: function(data) {
 			for (i in data) {
 				let res = $.parseJSON(data[i]);
@@ -33,7 +33,7 @@ $(document).ready(function() {
 			}
 			$.ajax({									//Adds previous exercises
 				type: 'GET',
-				url: 'http://liftbuddy.heroku.com/options',
+				url: 'http://liftbuddy.herokuapp.com/options',
 				success: function(data) {
 					let i;
 					let j;
@@ -87,7 +87,7 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 						type: 'POST',
 						data: JSON.stringify(data),
 						contentType: 'application/json',
-						url: 'http://liftbuddy.heroku.com/custom'
+						url: 'http://liftbuddy.herokuapp.com/custom'
 					});
 					$(`select option[value=${val}]`).attr("selected", true);
 					$('#custom-options').append($(`<select id=${val} name=${val} size=10>`));
@@ -109,7 +109,7 @@ $(document).ready(function() {											//Deals with the plus and minus sign on
 			type: 'PUT',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
-			url: 'http://liftbuddy.heroku.com/custom'
+			url: 'http://liftbuddy.herokuapp.com/custom'
 		});
 	});
 });
@@ -139,7 +139,7 @@ $(document).ready(function() {													//Deals with the right and left arrow
 		data.ind2			= to_remove_ind;
 		$.ajax({
 			type: 'PUT',
-			url: 'http://liftbuddy.heroku.com/del_options',
+			url: 'http://liftbuddy.herokuapp.com/del_options',
 			data: JSON.stringify(data),
 			contentType: 'application/json'
 		});
@@ -160,7 +160,7 @@ $(document).ready(function() {													//Deals with the right and left arrow
 		data.index 			= to_add_ind;
 		$.ajax({															//adds exercise to customOptions
 			type: 'PUT',
-			url: 'http://liftbuddy.heroku.com/options',
+			url: 'http://liftbuddy.herokuapp.com/options',
 			data: JSON.stringify(data),
 			contentType: 'application/json'
 		})
