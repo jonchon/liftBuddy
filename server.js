@@ -11,7 +11,7 @@ const app 			= express();
 const User 			= require('./models/user');
 
 app.set('view engine', 'ejs');
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/liftBuddy')
 	.then(()	=> console.log("connected to MongoDB..."))
 	.catch(err	=> console.log("could not connect to MongoDB..."));
 
