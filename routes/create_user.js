@@ -23,7 +23,7 @@ router.post('/', async (req, res, next) => {
 		if (req.body.password !== req.body.passwordConf) {
 			let err 	= new Error('Passwords do not match');
 			err.status 	= 400;
-			res.render('create_user', { error: "Passwords do not match" });
+			//res.render('create_user', { error: "Passwords do not match" });
 			return next(err);
 		}
 		else {
