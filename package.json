@@ -2,7 +2,7 @@
   "name": "liftBuddy",
   "version": "1.0.0",
   "engines": {
-    "node": "10.4.1"
+    "node": "7.10.1"
   },
   "description": "Web application that will help people maintain a workout schedule",
   "main": "index.js",
